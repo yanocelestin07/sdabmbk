@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dinas SDABMBK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f9;
+      }
+
+      header {
+        background: linear-gradient(90deg, #005baa, #ffd200);
+        color: white;
+        padding: 15px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+        font-weight: bold;
+      }
+
+      .hero {
+        background:
+          linear-gradient(rgba(0, 91, 170, 0.8), rgba(0, 91, 170, 0.8)),
+          url("https://via.placeholder.com/1200x400");
+        color: white;
+        padding: 80px 30px;
+        text-align: center;
+      }
+
+      .hero button {
+        background-color: #ffd200;
+        color: #005baa;
+        font-weight: bold;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .container {
+        padding: 30px;
+        max-width: 1100px;
+        margin: auto;
+      }
+
+      .container h2 {
+        color: #005baa;
+        border-left: 6px solid #ffd200;
+        padding-left: 10px;
+      }
+
+      .form-box {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+
+      .form-box label {
+        font-weight: bold;
+        display: block;
+        margin-top: 15px;
+      }
+
+      .form-box input,
+      .form-box textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      .form-box button {
+        margin-top: 20px;
+        background-color: #25d366;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      footer {
+        background: linear-gradient(90deg, #005baa, #003f7a);
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Dinas SDABMBK</h1>
+      <nav>
+        <a href="#">Beranda</a>
+        <a href="#">Profil</a>
+        <a href="#">Layanan</a>
+        <a href="#lapor">Lapor Jalan Rusak</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h2>Website Resmi Dinas SDABMBK</h2>
+      <button onclick="document.getElementById('lapor').scrollIntoView()">
+        Lapor Sekarang
+      </button>
+    </section>
+
+    <div class="container">
+      <h2 id="lapor">Form Lapor Jalan Rusak</h2>
+
+      <div class="form-box">
+        <form
+          onsubmit="
+            kirimWA();
+            return false;
+          "
+        >
+          <label>Nama Pelapor</label>
+          <input type="text" id="nama" required />
+
+          <label>Lokasi Jalan</label>
+          <input type="text" id="lokasi" required />
+
+          <label>Deskripsi</label>
+          <textarea id="deskripsi" rows="4" required></textarea>
+
+          <label>Upload Foto</label>
+          <input type="file" />
+
+          <button type="submit">Kirim ke WhatsApp</button>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Dinas SDABMBK</p>
+    </footer>
+
+    <script>
+      function kirimWA() {
+        var nama = document.getElementById("nama").value;
+        var lokasi = document.getElementById("lokasi").value;
+        var deskripsi = document.getElementById("deskripsi").value;
+
+        var nomor = "082237944036"; // GANTI dengan nomor WhatsApp dinas
+
+        var pesan =
+          "*LAPORAN JALAN RUSAK*%0A%0A" +
+          "Nama: " +
+          nama +
+          "%0A" +
+          "Lokasi: " +
+          lokasi +
+          "%0A" +
+          "Deskripsi: " +
+          deskripsi;
+
+        var url = "https://wa.me/" + nomor + "?text=" + pesan;
+
+        window.open(url, "_blank");
+      }
+    </script>
+  </body>
+</html>
